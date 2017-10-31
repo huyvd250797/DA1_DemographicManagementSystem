@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyNhanKhau01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CaNhan">
+    <Key>
+      <PropertyRef Name="SoCMND" />
+    </Key>
+    <Property Name="SoCMND" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="5" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" />
+    <Property Name="NguyenQuan" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayCap" Type="date" />
+    <Property Name="NoiCap" Type="nvarchar" MaxLength="50" />
+    <Property Name="HinhAnh" Type="image" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="HoKhau">
+    <Key>
+      <PropertyRef Name="MaSoHoKhau" />
+    </Key>
+    <Property Name="MaSoHoKhau" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SoNha" Type="nvarchar" MaxLength="100" />
+    <Property Name="Duong" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phuong" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quan" Type="nvarchar" MaxLength="100" />
+    <Property Name="ThanhPho" Type="nvarchar" MaxLength="100" />
+    <Property Name="ChuHo" Type="char" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="KT3">
+    <Key>
+      <PropertyRef Name="MaSoKT3" />
+    </Key>
+    <Property Name="MaSoKT3" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ChuSoKT3" Type="char" MaxLength="12" />
+    <Property Name="NgayCapSo" Type="date" />
+  </EntityType>
+  <EntityType Name="NhanKhauTamTru">
+    <Key>
+      <PropertyRef Name="NguoiTamTru" />
+    </Key>
+    <Property Name="NguoiTamTru" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="ThongTinHoKhau" Type="char" MaxLength="10" />
+    <Property Name="QuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+    <Property Name="NgayDKTTR" Type="date" />
+    <Property Name="DangKyTheoGiay" Type="bit" />
+    <Property Name="MaGiayTamTru" Type="char" MaxLength="10" />
+    <Property Name="DangKyTheoKT3" Type="bit" />
+    <Property Name="ThongTinKT3" Type="char" MaxLength="10" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NhanKhauTamVang">
+    <Key>
+      <PropertyRef Name="NguoiTamVang" />
+    </Key>
+    <Property Name="NguoiTamVang" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="DiaChiTamVang" Type="char" MaxLength="10" />
+    <Property Name="DiaChiOTam" Type="nvarchar" MaxLength="200" />
+    <Property Name="TamVangTu" Type="date" />
+    <Property Name="TamVangDen" Type="date" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="NhanKhauThuongTru">
+    <Key>
+      <PropertyRef Name="NguoiThuongTru" />
+    </Key>
+    <Property Name="NguoiThuongTru" Type="char" MaxLength="12" Nullable="false" />
+    <Property Name="QuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+    <Property Name="NgayDKTHTR" Type="date" />
+    <Property Name="ThongTinHoKhau" Type="char" MaxLength="10" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="ChuHo_HoKhau_ForeignKey">
+    <End Role="CaNhan" Type="Self.CaNhan" Multiplicity="0..1" />
+    <End Role="HoKhau" Type="Self.HoKhau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaNhan">
+        <PropertyRef Name="SoCMND" />
+      </Principal>
+      <Dependent Role="HoKhau">
+        <PropertyRef Name="ChuHo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChuSoKT3_KT3_ForeignKey">
+    <End Role="CaNhan" Type="Self.CaNhan" Multiplicity="0..1" />
+    <End Role="KT3" Type="Self.KT3" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CaNhan">
+        <PropertyRef Name="SoCMND" />
+      </Principal>
+      <Dependent Role="KT3">
+        <PropertyRef Name="ChuSoKT3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiaChiTamVang_NhanKhauTamVang_ForeignKey">
+    <End Role="HoKhau" Type="Self.HoKhau" Multiplicity="0..1" />
+    <End Role="NhanKhauTamVang" Type="Self.NhanKhauTamVang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoKhau">
+        <PropertyRef Name="MaSoHoKhau" />
+      </Principal>
+      <Dependent Role="NhanKhauTamVang">
+        <PropertyRef Name="DiaChiTamVang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NguoiTamTru_NhanKhauTamTru_ForeignKey">
+    <End Role="CaNhan" Type="Self.CaNhan" Multiplicity="1" />
+    <End Role="NhanKhauTamTru" Type="Self.NhanKhauTamTru" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CaNhan">
+        <PropertyRef Name="SoCMND" />
+      </Principal>
+      <Dependent Role="NhanKhauTamTru">
+        <PropertyRef Name="NguoiTamTru" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NguoiTamVang_NhanKhauTamVang_ForeignKey">
+    <End Role="CaNhan" Type="Self.CaNhan" Multiplicity="1" />
+    <End Role="NhanKhauTamVang" Type="Self.NhanKhauTamVang" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CaNhan">
+        <PropertyRef Name="SoCMND" />
+      </Principal>
+      <Dependent Role="NhanKhauTamVang">
+        <PropertyRef Name="NguoiTamVang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NguoiThuongTru_NhanKhauThuongTru_ForeignKey">
+    <End Role="CaNhan" Type="Self.CaNhan" Multiplicity="1" />
+    <End Role="NhanKhauThuongTru" Type="Self.NhanKhauThuongTru" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="CaNhan">
+        <PropertyRef Name="SoCMND" />
+      </Principal>
+      <Dependent Role="NhanKhauThuongTru">
+        <PropertyRef Name="NguoiThuongTru" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ThongTinHoKhau_NhanKhauTamTru_ForeignKey">
+    <End Role="HoKhau" Type="Self.HoKhau" Multiplicity="0..1" />
+    <End Role="NhanKhauTamTru" Type="Self.NhanKhauTamTru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoKhau">
+        <PropertyRef Name="MaSoHoKhau" />
+      </Principal>
+      <Dependent Role="NhanKhauTamTru">
+        <PropertyRef Name="ThongTinHoKhau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ThongTinHoKhau_NhanKhauThuongTru_ForeignKey">
+    <End Role="HoKhau" Type="Self.HoKhau" Multiplicity="0..1" />
+    <End Role="NhanKhauThuongTru" Type="Self.NhanKhauThuongTru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoKhau">
+        <PropertyRef Name="MaSoHoKhau" />
+      </Principal>
+      <Dependent Role="NhanKhauThuongTru">
+        <PropertyRef Name="ThongTinHoKhau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ThongTinKT3_NhanKhauTamTru_ForeignKey">
+    <End Role="KT3" Type="Self.KT3" Multiplicity="0..1" />
+    <End Role="NhanKhauTamTru" Type="Self.NhanKhauTamTru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KT3">
+        <PropertyRef Name="MaSoKT3" />
+      </Principal>
+      <Dependent Role="NhanKhauTamTru">
+        <PropertyRef Name="ThongTinKT3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ufnDanhSachCaNhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SoCMND" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="5" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="NguyenQuan" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayCap" Type="date" />
+          <Property Name="NoiCap" Type="nvarchar" MaxLength="50" />
+          <Property Name="HinhAnh" Type="image" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrMaSoHoKhau" Type="char" MaxLength="10" />
+          <Property Name="ttrSoNha" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrDuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrPhuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrQuan" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrThanhPho" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrCMNDChuHo" Type="char" MaxLength="12" />
+          <Property Name="ttrHoTenChuHo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ttrGioiTinhChuHo" Type="nvarchar" MaxLength="5" />
+          <Property Name="ttrNgaySinhChuHo" Type="date" />
+          <Property Name="ttrHinhAnhChuHo" Type="image" />
+          <Property Name="ttrQuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDKTTR" Type="date" />
+          <Property Name="DangKyTheoGiay" Type="bit" />
+          <Property Name="MaGiayTamTru" Type="char" MaxLength="10" />
+          <Property Name="DangKyTheoKT3" Type="bit" />
+          <Property Name="MaSoKT3" Type="char" MaxLength="10" />
+          <Property Name="SoCMNDChuSo" Type="char" MaxLength="12" />
+          <Property Name="HoTenChuSo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinhChuSo" Type="date" />
+          <Property Name="GioiTinhChuSo" Type="nvarchar" MaxLength="5" />
+          <Property Name="HinhAnhChuSo" Type="image" />
+          <Property Name="NgayCapSo" Type="date" />
+          <Property Name="ttrGhiChu" Type="nvarchar" MaxLength="200" />
+          <Property Name="thtMaSoHoKhau" Type="char" MaxLength="10" />
+          <Property Name="thtSoNha" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtDuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtPhuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtQuan" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtThanhPho" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtCMNDChuHo" Type="char" MaxLength="12" />
+          <Property Name="thtHoTenChuHo" Type="nvarchar" MaxLength="50" />
+          <Property Name="thtGioiTinhChuHo" Type="nvarchar" MaxLength="5" />
+          <Property Name="thtNgaySinhChuHo" Type="date" />
+          <Property Name="thtHinhAnhChuHo" Type="image" />
+          <Property Name="thtQuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDKTHTR" Type="date" />
+          <Property Name="thtGhiChu" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiaChiOTam" Type="nvarchar" MaxLength="200" />
+          <Property Name="TamVangTu" Type="date" />
+          <Property Name="TamVangDen" Type="date" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ufnDanhSachTamTruCoKT3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SoCMND" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="5" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="NguyenQuan" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayCap" Type="date" />
+          <Property Name="NoiCap" Type="nvarchar" MaxLength="50" />
+          <Property Name="HinhAnh" Type="image" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrMaSoHoKhau" Type="char" MaxLength="10" />
+          <Property Name="ttrSoNha" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrDuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrPhuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrQuan" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrThanhPho" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrCMNDChuHo" Type="char" MaxLength="12" />
+          <Property Name="ttrHoTenChuHo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ttrGioiTinhChuHo" Type="nvarchar" MaxLength="5" />
+          <Property Name="ttrNgaySinhChuHo" Type="date" />
+          <Property Name="ttrHinhAnhChuHo" Type="image" />
+          <Property Name="ttrQuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDKTTR" Type="date" />
+          <Property Name="DangKyTheoGiay" Type="bit" />
+          <Property Name="MaGiayTamTru" Type="char" MaxLength="10" />
+          <Property Name="DangKyTheoKT3" Type="bit" />
+          <Property Name="MaSoKT3" Type="char" MaxLength="10" />
+          <Property Name="SoCMNDChuSo" Type="char" MaxLength="12" />
+          <Property Name="HoTenChuSo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinhChuSo" Type="date" />
+          <Property Name="GioiTinhChuSo" Type="nvarchar" MaxLength="5" />
+          <Property Name="HinhAnhChuSo" Type="image" />
+          <Property Name="NgayCapSo" Type="date" />
+          <Property Name="ttrGhiChu" Type="nvarchar" MaxLength="200" />
+          <Property Name="thtMaSoHoKhau" Type="char" MaxLength="10" />
+          <Property Name="thtSoNha" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtDuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtPhuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtQuan" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtThanhPho" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtCMNDChuHo" Type="char" MaxLength="12" />
+          <Property Name="thtHoTenChuHo" Type="nvarchar" MaxLength="50" />
+          <Property Name="thtGioiTinhChuHo" Type="nvarchar" MaxLength="5" />
+          <Property Name="thtNgaySinhChuHo" Type="date" />
+          <Property Name="thtHinhAnhChuHo" Type="image" />
+          <Property Name="thtQuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDKTHTR" Type="date" />
+          <Property Name="thtGhiChu" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiaChiOTam" Type="nvarchar" MaxLength="200" />
+          <Property Name="TamVangTu" Type="date" />
+          <Property Name="TamVangDen" Type="date" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ufnDanhSachTamTruKhongKT3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SoCMND" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="5" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="NoiSinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="NguyenQuan" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayCap" Type="date" />
+          <Property Name="NoiCap" Type="nvarchar" MaxLength="50" />
+          <Property Name="HinhAnh" Type="image" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrMaSoHoKhau" Type="char" MaxLength="10" />
+          <Property Name="ttrSoNha" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrDuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrPhuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrQuan" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrThanhPho" Type="nvarchar" MaxLength="100" />
+          <Property Name="ttrCMNDChuHo" Type="char" MaxLength="12" />
+          <Property Name="ttrHoTenChuHo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ttrGioiTinhChuHo" Type="nvarchar" MaxLength="5" />
+          <Property Name="ttrNgaySinhChuHo" Type="date" />
+          <Property Name="ttrHinhAnhChuHo" Type="image" />
+          <Property Name="ttrQuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDKTTR" Type="date" />
+          <Property Name="DangKyTheoGiay" Type="bit" />
+          <Property Name="MaGiayTamTru" Type="char" MaxLength="10" />
+          <Property Name="DangKyTheoKT3" Type="bit" />
+          <Property Name="MaSoKT3" Type="char" MaxLength="10" />
+          <Property Name="SoCMNDChuSo" Type="char" MaxLength="12" />
+          <Property Name="HoTenChuSo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinhChuSo" Type="date" />
+          <Property Name="GioiTinhChuSo" Type="nvarchar" MaxLength="5" />
+          <Property Name="HinhAnhChuSo" Type="image" />
+          <Property Name="NgayCapSo" Type="date" />
+          <Property Name="ttrGhiChu" Type="nvarchar" MaxLength="200" />
+          <Property Name="thtMaSoHoKhau" Type="char" MaxLength="10" />
+          <Property Name="thtSoNha" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtDuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtPhuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtQuan" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtThanhPho" Type="nvarchar" MaxLength="100" />
+          <Property Name="thtCMNDChuHo" Type="char" MaxLength="12" />
+          <Property Name="thtHoTenChuHo" Type="nvarchar" MaxLength="50" />
+          <Property Name="thtGioiTinhChuHo" Type="nvarchar" MaxLength="5" />
+          <Property Name="thtNgaySinhChuHo" Type="date" />
+          <Property Name="thtHinhAnhChuHo" Type="image" />
+          <Property Name="thtQuanHeVoiChuHo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayDKTHTR" Type="date" />
+          <Property Name="thtGhiChu" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiaChiOTam" Type="nvarchar" MaxLength="200" />
+          <Property Name="TamVangTu" Type="date" />
+          <Property Name="TamVangDen" Type="date" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ufnThongTinHoKhauCuThe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="masohokhau" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SoNha" Type="nvarchar" MaxLength="100" />
+          <Property Name="Duong" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phuong" Type="nvarchar" MaxLength="100" />
+          <Property Name="Quan" Type="nvarchar" MaxLength="100" />
+          <Property Name="ThanhPho" Type="nvarchar" MaxLength="100" />
+          <Property Name="CMNDChuHo" Type="char" MaxLength="12" />
+          <Property Name="HoTenChuHo" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioiTinhChuHo" Type="nvarchar" MaxLength="5" />
+          <Property Name="NgaySinhChuHo" Type="date" />
+          <Property Name="HinhAnhChuHo" Type="image" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="ufnThongTinKT3CuThe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="masokt3" Type="char" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SoCMNDChuSo" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="HoTenChuSo" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinhChuSo" Type="date" />
+          <Property Name="GioiTinhChuSo" Type="nvarchar" MaxLength="5" />
+          <Property Name="HinhAnhChuSo" Type="image" />
+          <Property Name="NgayCapSo" Type="date" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="QuanLyNhanKhau01ModelStoreContainer">
+    <EntitySet Name="CaNhan" EntityType="Self.CaNhan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HoKhau" EntityType="Self.HoKhau" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KT3" EntityType="Self.KT3" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanKhauTamTru" EntityType="Self.NhanKhauTamTru" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanKhauTamVang" EntityType="Self.NhanKhauTamVang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanKhauThuongTru" EntityType="Self.NhanKhauThuongTru" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="ChuHo_HoKhau_ForeignKey" Association="Self.ChuHo_HoKhau_ForeignKey">
+      <End Role="CaNhan" EntitySet="CaNhan" />
+      <End Role="HoKhau" EntitySet="HoKhau" />
+    </AssociationSet>
+    <AssociationSet Name="ChuSoKT3_KT3_ForeignKey" Association="Self.ChuSoKT3_KT3_ForeignKey">
+      <End Role="CaNhan" EntitySet="CaNhan" />
+      <End Role="KT3" EntitySet="KT3" />
+    </AssociationSet>
+    <AssociationSet Name="DiaChiTamVang_NhanKhauTamVang_ForeignKey" Association="Self.DiaChiTamVang_NhanKhauTamVang_ForeignKey">
+      <End Role="HoKhau" EntitySet="HoKhau" />
+      <End Role="NhanKhauTamVang" EntitySet="NhanKhauTamVang" />
+    </AssociationSet>
+    <AssociationSet Name="NguoiTamTru_NhanKhauTamTru_ForeignKey" Association="Self.NguoiTamTru_NhanKhauTamTru_ForeignKey">
+      <End Role="CaNhan" EntitySet="CaNhan" />
+      <End Role="NhanKhauTamTru" EntitySet="NhanKhauTamTru" />
+    </AssociationSet>
+    <AssociationSet Name="NguoiTamVang_NhanKhauTamVang_ForeignKey" Association="Self.NguoiTamVang_NhanKhauTamVang_ForeignKey">
+      <End Role="CaNhan" EntitySet="CaNhan" />
+      <End Role="NhanKhauTamVang" EntitySet="NhanKhauTamVang" />
+    </AssociationSet>
+    <AssociationSet Name="NguoiThuongTru_NhanKhauThuongTru_ForeignKey" Association="Self.NguoiThuongTru_NhanKhauThuongTru_ForeignKey">
+      <End Role="CaNhan" EntitySet="CaNhan" />
+      <End Role="NhanKhauThuongTru" EntitySet="NhanKhauThuongTru" />
+    </AssociationSet>
+    <AssociationSet Name="ThongTinHoKhau_NhanKhauTamTru_ForeignKey" Association="Self.ThongTinHoKhau_NhanKhauTamTru_ForeignKey">
+      <End Role="HoKhau" EntitySet="HoKhau" />
+      <End Role="NhanKhauTamTru" EntitySet="NhanKhauTamTru" />
+    </AssociationSet>
+    <AssociationSet Name="ThongTinHoKhau_NhanKhauThuongTru_ForeignKey" Association="Self.ThongTinHoKhau_NhanKhauThuongTru_ForeignKey">
+      <End Role="HoKhau" EntitySet="HoKhau" />
+      <End Role="NhanKhauThuongTru" EntitySet="NhanKhauThuongTru" />
+    </AssociationSet>
+    <AssociationSet Name="ThongTinKT3_NhanKhauTamTru_ForeignKey" Association="Self.ThongTinKT3_NhanKhauTamTru_ForeignKey">
+      <End Role="KT3" EntitySet="KT3" />
+      <End Role="NhanKhauTamTru" EntitySet="NhanKhauTamTru" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

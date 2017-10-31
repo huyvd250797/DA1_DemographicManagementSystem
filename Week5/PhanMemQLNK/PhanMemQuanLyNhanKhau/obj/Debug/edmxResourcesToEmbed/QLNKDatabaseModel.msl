@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuanLyNhanKhau01ModelStoreContainer" CdmEntityContainer="QuanLyNhanKhauEntities">
+    <EntitySetMapping Name="CaNhans">
+      <EntityTypeMapping TypeName="QuanLyNhanKhau01Model.CaNhan">
+        <MappingFragment StoreEntitySet="CaNhan">
+          <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
+          <ScalarProperty Name="NguyenQuan" ColumnName="NguyenQuan" />
+          <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+          <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HoKhaus">
+      <EntityTypeMapping TypeName="QuanLyNhanKhau01Model.HoKhau">
+        <MappingFragment StoreEntitySet="HoKhau">
+          <ScalarProperty Name="MaSoHoKhau" ColumnName="MaSoHoKhau" />
+          <ScalarProperty Name="SoNha" ColumnName="SoNha" />
+          <ScalarProperty Name="Duong" ColumnName="Duong" />
+          <ScalarProperty Name="Phuong" ColumnName="Phuong" />
+          <ScalarProperty Name="Quan" ColumnName="Quan" />
+          <ScalarProperty Name="ThanhPho" ColumnName="ThanhPho" />
+          <ScalarProperty Name="ChuHo" ColumnName="ChuHo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KT3">
+      <EntityTypeMapping TypeName="QuanLyNhanKhau01Model.KT3">
+        <MappingFragment StoreEntitySet="KT3">
+          <ScalarProperty Name="MaSoKT3" ColumnName="MaSoKT3" />
+          <ScalarProperty Name="ChuSoKT3" ColumnName="ChuSoKT3" />
+          <ScalarProperty Name="NgayCapSo" ColumnName="NgayCapSo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanKhauTamTrus">
+      <EntityTypeMapping TypeName="QuanLyNhanKhau01Model.NhanKhauTamTru">
+        <MappingFragment StoreEntitySet="NhanKhauTamTru">
+          <ScalarProperty Name="MaGiayTamTru" ColumnName="MaGiayTamTru" />
+          <ScalarProperty Name="DangKyTheoGiay" ColumnName="DangKyTheoGiay" />
+          <ScalarProperty Name="NguoiTamTru" ColumnName="NguoiTamTru" />
+          <ScalarProperty Name="ThongTinHoKhau" ColumnName="ThongTinHoKhau" />
+          <ScalarProperty Name="QuanHeVoiChuHo" ColumnName="QuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTTR" ColumnName="NgayDKTTR" />
+          <ScalarProperty Name="DangKyTheoKT3" ColumnName="DangKyTheoKT3" />
+          <ScalarProperty Name="ThongTinKT3" ColumnName="ThongTinKT3" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanKhauTamVangs">
+      <EntityTypeMapping TypeName="QuanLyNhanKhau01Model.NhanKhauTamVang">
+        <MappingFragment StoreEntitySet="NhanKhauTamVang">
+          <ScalarProperty Name="NguoiTamVang" ColumnName="NguoiTamVang" />
+          <ScalarProperty Name="DiaChiTamVang" ColumnName="DiaChiTamVang" />
+          <ScalarProperty Name="DiaChiOTam" ColumnName="DiaChiOTam" />
+          <ScalarProperty Name="TamVangTu" ColumnName="TamVangTu" />
+          <ScalarProperty Name="TamVangDen" ColumnName="TamVangDen" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NhanKhauThuongTrus">
+      <EntityTypeMapping TypeName="QuanLyNhanKhau01Model.NhanKhauThuongTru">
+        <MappingFragment StoreEntitySet="NhanKhauThuongTru">
+          <ScalarProperty Name="NguoiThuongTru" ColumnName="NguoiThuongTru" />
+          <ScalarProperty Name="QuanHeVoiChuHo" ColumnName="QuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTHTR" ColumnName="NgayDKTHTR" />
+          <ScalarProperty Name="ThongTinHoKhau" ColumnName="ThongTinHoKhau" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ufnDanhSachCaNhan" FunctionName="QuanLyNhanKhau01Model.Store.ufnDanhSachCaNhan">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanLyNhanKhau01Model.ufnDanhSachCaNhan_Result">
+          <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
+          <ScalarProperty Name="NguyenQuan" ColumnName="NguyenQuan" />
+          <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+          <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="ttrMaSoHoKhau" ColumnName="ttrMaSoHoKhau" />
+          <ScalarProperty Name="ttrSoNha" ColumnName="ttrSoNha" />
+          <ScalarProperty Name="ttrDuong" ColumnName="ttrDuong" />
+          <ScalarProperty Name="ttrPhuong" ColumnName="ttrPhuong" />
+          <ScalarProperty Name="ttrQuan" ColumnName="ttrQuan" />
+          <ScalarProperty Name="ttrThanhPho" ColumnName="ttrThanhPho" />
+          <ScalarProperty Name="ttrCMNDChuHo" ColumnName="ttrCMNDChuHo" />
+          <ScalarProperty Name="ttrHoTenChuHo" ColumnName="ttrHoTenChuHo" />
+          <ScalarProperty Name="ttrGioiTinhChuHo" ColumnName="ttrGioiTinhChuHo" />
+          <ScalarProperty Name="ttrNgaySinhChuHo" ColumnName="ttrNgaySinhChuHo" />
+          <ScalarProperty Name="ttrHinhAnhChuHo" ColumnName="ttrHinhAnhChuHo" />
+          <ScalarProperty Name="ttrQuanHeVoiChuHo" ColumnName="ttrQuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTTR" ColumnName="NgayDKTTR" />
+          <ScalarProperty Name="DangKyTheoGiay" ColumnName="DangKyTheoGiay" />
+          <ScalarProperty Name="MaGiayTamTru" ColumnName="MaGiayTamTru" />
+          <ScalarProperty Name="DangKyTheoKT3" ColumnName="DangKyTheoKT3" />
+          <ScalarProperty Name="MaSoKT3" ColumnName="MaSoKT3" />
+          <ScalarProperty Name="SoCMNDChuSo" ColumnName="SoCMNDChuSo" />
+          <ScalarProperty Name="HoTenChuSo" ColumnName="HoTenChuSo" />
+          <ScalarProperty Name="NgaySinhChuSo" ColumnName="NgaySinhChuSo" />
+          <ScalarProperty Name="GioiTinhChuSo" ColumnName="GioiTinhChuSo" />
+          <ScalarProperty Name="HinhAnhChuSo" ColumnName="HinhAnhChuSo" />
+          <ScalarProperty Name="NgayCapSo" ColumnName="NgayCapSo" />
+          <ScalarProperty Name="ttrGhiChu" ColumnName="ttrGhiChu" />
+          <ScalarProperty Name="thtMaSoHoKhau" ColumnName="thtMaSoHoKhau" />
+          <ScalarProperty Name="thtSoNha" ColumnName="thtSoNha" />
+          <ScalarProperty Name="thtDuong" ColumnName="thtDuong" />
+          <ScalarProperty Name="thtPhuong" ColumnName="thtPhuong" />
+          <ScalarProperty Name="thtQuan" ColumnName="thtQuan" />
+          <ScalarProperty Name="thtThanhPho" ColumnName="thtThanhPho" />
+          <ScalarProperty Name="thtCMNDChuHo" ColumnName="thtCMNDChuHo" />
+          <ScalarProperty Name="thtHoTenChuHo" ColumnName="thtHoTenChuHo" />
+          <ScalarProperty Name="thtGioiTinhChuHo" ColumnName="thtGioiTinhChuHo" />
+          <ScalarProperty Name="thtNgaySinhChuHo" ColumnName="thtNgaySinhChuHo" />
+          <ScalarProperty Name="thtHinhAnhChuHo" ColumnName="thtHinhAnhChuHo" />
+          <ScalarProperty Name="thtQuanHeVoiChuHo" ColumnName="thtQuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTHTR" ColumnName="NgayDKTHTR" />
+          <ScalarProperty Name="thtGhiChu" ColumnName="thtGhiChu" />
+          <ScalarProperty Name="DiaChiOTam" ColumnName="DiaChiOTam" />
+          <ScalarProperty Name="TamVangTu" ColumnName="TamVangTu" />
+          <ScalarProperty Name="TamVangDen" ColumnName="TamVangDen" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ufnDanhSachTamTruCoKT3" FunctionName="QuanLyNhanKhau01Model.Store.ufnDanhSachTamTruCoKT3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanLyNhanKhau01Model.ufnDanhSachTamTruCoKT3_Result">
+          <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
+          <ScalarProperty Name="NguyenQuan" ColumnName="NguyenQuan" />
+          <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+          <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="ttrMaSoHoKhau" ColumnName="ttrMaSoHoKhau" />
+          <ScalarProperty Name="ttrSoNha" ColumnName="ttrSoNha" />
+          <ScalarProperty Name="ttrDuong" ColumnName="ttrDuong" />
+          <ScalarProperty Name="ttrPhuong" ColumnName="ttrPhuong" />
+          <ScalarProperty Name="ttrQuan" ColumnName="ttrQuan" />
+          <ScalarProperty Name="ttrThanhPho" ColumnName="ttrThanhPho" />
+          <ScalarProperty Name="ttrCMNDChuHo" ColumnName="ttrCMNDChuHo" />
+          <ScalarProperty Name="ttrHoTenChuHo" ColumnName="ttrHoTenChuHo" />
+          <ScalarProperty Name="ttrGioiTinhChuHo" ColumnName="ttrGioiTinhChuHo" />
+          <ScalarProperty Name="ttrNgaySinhChuHo" ColumnName="ttrNgaySinhChuHo" />
+          <ScalarProperty Name="ttrHinhAnhChuHo" ColumnName="ttrHinhAnhChuHo" />
+          <ScalarProperty Name="ttrQuanHeVoiChuHo" ColumnName="ttrQuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTTR" ColumnName="NgayDKTTR" />
+          <ScalarProperty Name="DangKyTheoGiay" ColumnName="DangKyTheoGiay" />
+          <ScalarProperty Name="MaGiayTamTru" ColumnName="MaGiayTamTru" />
+          <ScalarProperty Name="DangKyTheoKT3" ColumnName="DangKyTheoKT3" />
+          <ScalarProperty Name="MaSoKT3" ColumnName="MaSoKT3" />
+          <ScalarProperty Name="SoCMNDChuSo" ColumnName="SoCMNDChuSo" />
+          <ScalarProperty Name="HoTenChuSo" ColumnName="HoTenChuSo" />
+          <ScalarProperty Name="NgaySinhChuSo" ColumnName="NgaySinhChuSo" />
+          <ScalarProperty Name="GioiTinhChuSo" ColumnName="GioiTinhChuSo" />
+          <ScalarProperty Name="HinhAnhChuSo" ColumnName="HinhAnhChuSo" />
+          <ScalarProperty Name="NgayCapSo" ColumnName="NgayCapSo" />
+          <ScalarProperty Name="ttrGhiChu" ColumnName="ttrGhiChu" />
+          <ScalarProperty Name="thtMaSoHoKhau" ColumnName="thtMaSoHoKhau" />
+          <ScalarProperty Name="thtSoNha" ColumnName="thtSoNha" />
+          <ScalarProperty Name="thtDuong" ColumnName="thtDuong" />
+          <ScalarProperty Name="thtPhuong" ColumnName="thtPhuong" />
+          <ScalarProperty Name="thtQuan" ColumnName="thtQuan" />
+          <ScalarProperty Name="thtThanhPho" ColumnName="thtThanhPho" />
+          <ScalarProperty Name="thtCMNDChuHo" ColumnName="thtCMNDChuHo" />
+          <ScalarProperty Name="thtHoTenChuHo" ColumnName="thtHoTenChuHo" />
+          <ScalarProperty Name="thtGioiTinhChuHo" ColumnName="thtGioiTinhChuHo" />
+          <ScalarProperty Name="thtNgaySinhChuHo" ColumnName="thtNgaySinhChuHo" />
+          <ScalarProperty Name="thtHinhAnhChuHo" ColumnName="thtHinhAnhChuHo" />
+          <ScalarProperty Name="thtQuanHeVoiChuHo" ColumnName="thtQuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTHTR" ColumnName="NgayDKTHTR" />
+          <ScalarProperty Name="thtGhiChu" ColumnName="thtGhiChu" />
+          <ScalarProperty Name="DiaChiOTam" ColumnName="DiaChiOTam" />
+          <ScalarProperty Name="TamVangTu" ColumnName="TamVangTu" />
+          <ScalarProperty Name="TamVangDen" ColumnName="TamVangDen" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ufnDanhSachTamTruKhongKT3" FunctionName="QuanLyNhanKhau01Model.Store.ufnDanhSachTamTruKhongKT3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanLyNhanKhau01Model.ufnDanhSachTamTruKhongKT3_Result">
+          <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="NoiSinh" ColumnName="NoiSinh" />
+          <ScalarProperty Name="NguyenQuan" ColumnName="NguyenQuan" />
+          <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+          <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="ttrMaSoHoKhau" ColumnName="ttrMaSoHoKhau" />
+          <ScalarProperty Name="ttrSoNha" ColumnName="ttrSoNha" />
+          <ScalarProperty Name="ttrDuong" ColumnName="ttrDuong" />
+          <ScalarProperty Name="ttrPhuong" ColumnName="ttrPhuong" />
+          <ScalarProperty Name="ttrQuan" ColumnName="ttrQuan" />
+          <ScalarProperty Name="ttrThanhPho" ColumnName="ttrThanhPho" />
+          <ScalarProperty Name="ttrCMNDChuHo" ColumnName="ttrCMNDChuHo" />
+          <ScalarProperty Name="ttrHoTenChuHo" ColumnName="ttrHoTenChuHo" />
+          <ScalarProperty Name="ttrGioiTinhChuHo" ColumnName="ttrGioiTinhChuHo" />
+          <ScalarProperty Name="ttrNgaySinhChuHo" ColumnName="ttrNgaySinhChuHo" />
+          <ScalarProperty Name="ttrHinhAnhChuHo" ColumnName="ttrHinhAnhChuHo" />
+          <ScalarProperty Name="ttrQuanHeVoiChuHo" ColumnName="ttrQuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTTR" ColumnName="NgayDKTTR" />
+          <ScalarProperty Name="DangKyTheoGiay" ColumnName="DangKyTheoGiay" />
+          <ScalarProperty Name="MaGiayTamTru" ColumnName="MaGiayTamTru" />
+          <ScalarProperty Name="DangKyTheoKT3" ColumnName="DangKyTheoKT3" />
+          <ScalarProperty Name="MaSoKT3" ColumnName="MaSoKT3" />
+          <ScalarProperty Name="SoCMNDChuSo" ColumnName="SoCMNDChuSo" />
+          <ScalarProperty Name="HoTenChuSo" ColumnName="HoTenChuSo" />
+          <ScalarProperty Name="NgaySinhChuSo" ColumnName="NgaySinhChuSo" />
+          <ScalarProperty Name="GioiTinhChuSo" ColumnName="GioiTinhChuSo" />
+          <ScalarProperty Name="HinhAnhChuSo" ColumnName="HinhAnhChuSo" />
+          <ScalarProperty Name="NgayCapSo" ColumnName="NgayCapSo" />
+          <ScalarProperty Name="ttrGhiChu" ColumnName="ttrGhiChu" />
+          <ScalarProperty Name="thtMaSoHoKhau" ColumnName="thtMaSoHoKhau" />
+          <ScalarProperty Name="thtSoNha" ColumnName="thtSoNha" />
+          <ScalarProperty Name="thtDuong" ColumnName="thtDuong" />
+          <ScalarProperty Name="thtPhuong" ColumnName="thtPhuong" />
+          <ScalarProperty Name="thtQuan" ColumnName="thtQuan" />
+          <ScalarProperty Name="thtThanhPho" ColumnName="thtThanhPho" />
+          <ScalarProperty Name="thtCMNDChuHo" ColumnName="thtCMNDChuHo" />
+          <ScalarProperty Name="thtHoTenChuHo" ColumnName="thtHoTenChuHo" />
+          <ScalarProperty Name="thtGioiTinhChuHo" ColumnName="thtGioiTinhChuHo" />
+          <ScalarProperty Name="thtNgaySinhChuHo" ColumnName="thtNgaySinhChuHo" />
+          <ScalarProperty Name="thtHinhAnhChuHo" ColumnName="thtHinhAnhChuHo" />
+          <ScalarProperty Name="thtQuanHeVoiChuHo" ColumnName="thtQuanHeVoiChuHo" />
+          <ScalarProperty Name="NgayDKTHTR" ColumnName="NgayDKTHTR" />
+          <ScalarProperty Name="thtGhiChu" ColumnName="thtGhiChu" />
+          <ScalarProperty Name="DiaChiOTam" ColumnName="DiaChiOTam" />
+          <ScalarProperty Name="TamVangTu" ColumnName="TamVangTu" />
+          <ScalarProperty Name="TamVangDen" ColumnName="TamVangDen" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ufnThongTinHoKhauCuThe" FunctionName="QuanLyNhanKhau01Model.Store.ufnThongTinHoKhauCuThe">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanLyNhanKhau01Model.ufnThongTinHoKhauCuThe_Result">
+          <ScalarProperty Name="SoNha" ColumnName="SoNha" />
+          <ScalarProperty Name="Duong" ColumnName="Duong" />
+          <ScalarProperty Name="Phuong" ColumnName="Phuong" />
+          <ScalarProperty Name="Quan" ColumnName="Quan" />
+          <ScalarProperty Name="ThanhPho" ColumnName="ThanhPho" />
+          <ScalarProperty Name="CMNDChuHo" ColumnName="CMNDChuHo" />
+          <ScalarProperty Name="HoTenChuHo" ColumnName="HoTenChuHo" />
+          <ScalarProperty Name="GioiTinhChuHo" ColumnName="GioiTinhChuHo" />
+          <ScalarProperty Name="NgaySinhChuHo" ColumnName="NgaySinhChuHo" />
+          <ScalarProperty Name="HinhAnhChuHo" ColumnName="HinhAnhChuHo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ufnThongTinKT3CuThe" FunctionName="QuanLyNhanKhau01Model.Store.ufnThongTinKT3CuThe">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QuanLyNhanKhau01Model.ufnThongTinKT3CuThe_Result">
+          <ScalarProperty Name="SoCMNDChuSo" ColumnName="SoCMNDChuSo" />
+          <ScalarProperty Name="HoTenChuSo" ColumnName="HoTenChuSo" />
+          <ScalarProperty Name="NgaySinhChuSo" ColumnName="NgaySinhChuSo" />
+          <ScalarProperty Name="GioiTinhChuSo" ColumnName="GioiTinhChuSo" />
+          <ScalarProperty Name="HinhAnhChuSo" ColumnName="HinhAnhChuSo" />
+          <ScalarProperty Name="NgayCapSo" ColumnName="NgayCapSo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
